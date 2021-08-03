@@ -5,6 +5,9 @@
 [![Framework](https://img.shields.io/badge/Framework-PyQt5-important?style=for-the-badge)](https://riverbankcomputing.com/software/pyqt/download)
 [![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)](https://raw.githubusercontent.com/lakshya076/DarkNotes/master/LICENSE)
 
+![Text Editor](https://i.imgur.com/Ukdb4kL.png)
+![Markdown Editor](https://i.imgur.com/yJKMDFL.png)
+
 ## Requirements
 - [Python 3.7 or later version](https://www.python.org/downloads/)
 - Packages mentioned in the `requirements.txt` file.
