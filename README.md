@@ -6,7 +6,7 @@
 [![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)](https://raw.githubusercontent.com/lakshya076/DarkNotes/master/LICENSE)
 
 ## Requirements
-- [Python 3.7 or later versions](https://www.python.org/downloads/)
+- [Python 3.7 or later version](https://www.python.org/downloads/)
 - Packages mentioned in the `requirements.txt` file.
   #### For Windows
   ```
