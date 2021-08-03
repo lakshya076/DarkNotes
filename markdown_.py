@@ -205,46 +205,56 @@ class MarkdownDN(QMainWindow):
 
         try:
             os.mkdir(dir_path)
+        except FileExistsError:
+            pass
+        except FileNotFoundError:
+            os.mkdir(dir_path)
 
+        with open(file_path, 'w') as md_file:
+            with open('markdown_dn\\mode.txt', 'r') as mode_file:
+                content = mode_file.readlines()
+                try:
+                    if content[0] == 'dark':
+                        md_file.write(html_layout_dark)
+                        md_file.close()
+                        
+                    elif content[0] == 'light':
+                        md_file.write(html_layout_white)
+                        md_file.close()
+
+                except:
+                    md_file.write(html_layout_dark)
+                    md_file.close()
+
+                mode_file.close()
+
+            with open(file_path, 'r') as md2html_file:
+                file_read = md2html_file.read()
+                self.webview.setHtml(file_read)
+
+        if text == '':
             with open(file_path, 'w') as md_file:
                 with open('markdown_dn\\mode.txt', 'r') as mode_file:
                     content = mode_file.readlines()
                     try:
                         if content[0] == 'dark':
-                            md_file.write(html_layout_dark)
-                            md_file.close()
-                        elif content[0] == 'light':
-                            md_file.write(html_layout_white)
-                            md_file.close()
-
+                            with open('markdown_dn/webview_components/webview_defaulthtml.html', 'r') as webview_default_file:
+                                default_html = webview_default_file.read()
+                                self.webview.setHtml(default_html)
+                                webview_default_file.close()
+                            
+                        if content[0] == 'light':
+                            with open('markdown_dn/webview_components/webview_default_light.html', 'r') as webview_light_file:
+                                light_webview = webview_light_file.read()
+                                self.webview.setHtml(light_webview)
+                                webview_light_file.close()
+                    
                     except:
-                        md_file.write(html_layout_dark)
-                        md_file.close()
-
-                    mode_file.close()
-
-            with open(file_path, 'r') as md2html_file:
-                file_read = md2html_file.read()
-                self.webview.setHtml(file_read)
-
-        except FileExistsError:
-            file_path = f'C:\\Users\\{user}\\appdata\\Roaming\\DarkNotesMarkdown\\mdtemp.html'
-            with open(file_path, 'w') as md_file:
-                md_file.write(html_layout_dark)
-                md_file.close()
-
-            with open(file_path, 'r') as md2html_file:
-                file_read = md2html_file.read()
-                self.webview.setHtml(file_read)
-
-        except FileNotFoundError:
-            os.mkdir(dir_path)
-
-        if text == '':
-            with open('markdown_dn/webview_components/webview_defaulthtml.html', 'r') as webview_default_file:
-                default_html = webview_default_file.read()
-                self.webview.setHtml(default_html)
-                webview_default_file.close()
+                        with open('markdown_dn/webview_components/webview_defaulthtml.html', 'r') as webview_default_file:
+                                default_html = webview_default_file.read()
+                                self.webview.setHtml(default_html)
+                                webview_default_file.close()
+                            
 
     def toolbar_buttons(self):
         self.toolbar.addAction(Toolbar_Items(self).save_btn)
