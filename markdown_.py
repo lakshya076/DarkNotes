@@ -35,7 +35,7 @@ class MarkdownDN(QMainWindow):
 
         self.setWindowTitle('Markdown Mode - DarkNotes')
         self.setWindowIcon(QIcon(icon_library + 'dark_notes.png'))
-        self.setFont(QFont('Source Code Pro', 14))
+        self.setFont(QFont('Calibri', 13))
         self.setStyleSheet(self.dark_mode_css_main)
         self.setGeometry(200, 200, 1200, 800)
 
@@ -45,6 +45,8 @@ class MarkdownDN(QMainWindow):
 
         self.editor = QTextEdit()
         self.editor.textChanged.connect(self.md_html_cont)
+        self.editor.setFont(QFont('Calibri', 13))
+
 
         self.webview = QWebEngineView()
 
