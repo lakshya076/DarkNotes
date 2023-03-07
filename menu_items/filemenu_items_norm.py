@@ -27,8 +27,8 @@ class FileMenu_Items:
         self.saveas_file_action.triggered.connect(self.parent.file_saveas)
         self.saveas_file_action.setShortcut(QKeySequence('Ctrl+Shift+S'))
 
-        self.md_mode_action = QAction(QIcon(), "Markdown Mode", self.parent)
-        self.md_mode_action.setStatusTip("Enter the markdown mode. (Still in beta)")
+        self.md_mode_action = QAction(QIcon(), "Markdown Mode (Experimental)", self.parent)
+        self.md_mode_action.setStatusTip("Enter the markdown mode. (Experimental)")
         self.md_mode_action.triggered.connect(self.parent.md_mode)
         self.md_mode_action.setShortcut(QKeySequence('Ctrl+Shift+M'))
 
